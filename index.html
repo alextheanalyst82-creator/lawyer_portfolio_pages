@@ -3,1331 +3,925 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sterling & Associates Law Firm</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Sterling & Associates Law Firm - Expert Legal Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --dark: #0a0a0a;
-    --dark-2: #111111;
-    --dark-3: #1a1a1a;
-    --dark-4: #222222;
-    --text: #e8e0d0;
-    --text-muted: #8a7f6e;
-    --white: #f5f0e8;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  
+  :root {
+    --primary: #1a1a2e;
+    --secondary: #c9a84c;
+    --accent: #e8c97a;
+    --dark: #0f0f1e;
+    --light: #f5f5f5;
+    --text: #333;
+    --text-light: #666;
+    --white: #fff;
+  }
+  
   html { scroll-behavior: smooth; }
-
+  
   body {
-    background: var(--dark);
+    font-family: 'Inter', sans-serif;
     color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    line-height: 1.6;
     overflow-x: hidden;
   }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 60px;
-    height: 72px;
+  
+  /* Top Bar */
+  .top-bar {
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
+  
+  .top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(20,14,10,0.96);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    animation: fadeDown 0.8s ease both;
+    flex-wrap: wrap;
+    gap: 15px;
   }
-
-  @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-
-  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-  .nav-seal {
-    width: 52px; height: 52px; flex-shrink: 0;
+  
+  .top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .nav-brand-text { display: flex; flex-direction: column; }
-  .nav-brand-text .firm-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+  
+  .top-bar a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .top-bar a:hover { color: var(--accent); }
+  
+  /* Navigation */
+  nav {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    line-height: 1.1;
+    color: var(--primary);
   }
-  .nav-brand-text .firm-tagline {
-    font-size: 0.55rem;
-    letter-spacing: 4px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-top: 2px;
+  
+  .logo span { color: var(--secondary); }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
   }
-
-  .nav-links { display: flex; gap: 0; list-style: none; }
+  
   .nav-links a {
     color: var(--text);
     text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 400;
-    padding: 0 24px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s, background 0.3s;
-    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
   }
-  .nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-  .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-  /* ─── HERO ─── */
+  
+  .nav-links a:hover { color: var(--secondary); }
+  
+  .nav-cta {
+    background: var(--secondary);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .nav-cta:hover { background: #b89840; }
+  
+  /* Hero Section */
   .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #16162a 100%);
+    color: var(--white);
+    padding: 100px 20px;
     position: relative;
-    height: 100vh;
-    min-height: 640px;
-    display: flex;
-    align-items: center;
     overflow: hidden;
   }
-
-  /* Courthouse background — animated SVG */
-  .hero-bg {
+  
+  .hero::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    z-index: 0;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/></svg>');
+    background-size: 100px 100px;
+    opacity: 0.3;
   }
-  .hero-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(15,8,4,0.92) 0%,
-      rgba(15,8,4,0.80) 45%,
-      rgba(15,8,4,0.30) 70%,
-      rgba(15,8,4,0.15) 100%
-    );
+  
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
     z-index: 1;
   }
-
-  /* ─── GOLD ARCH ─── */
-  .hero-arch-wrap {
-    position: absolute;
-    right: 0; bottom: 0;
-    width: 52%;
-    height: 100%;
-    z-index: 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  .hero-arch {
-    position: relative;
-    width: 650px;
-    height: 90%;
-    margin-bottom: 0;
-  }
-  /* The gold semicircle arch behind figure */
-  .arch-bg {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 580px;
-    height: 580px;
-    background: radial-gradient(ellipse at 50% 100%, #b8921e 0%, #c9a84c 40%, #a07828 70%, transparent 100%);
-    border-radius: 50% 50% 0 0;
-    animation: archPulse 6s ease-in-out infinite;
-  }
-  @keyframes archPulse {
-    0%,100% { filter: brightness(1); }
-    50% { filter: brightness(1.1); }
-  }
-  /* Decorative lady justice outline on arch right */
-  .arch-justice {
-    position: absolute;
-    right: -30px;
-    bottom: 0;
-    width: 180px;
-    height: 480px;
-    opacity: 0.18;
-  }
-
-  /* ─── ANIMATED LAWYER FIGURE ─── */
-  .lawyer-figure {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 550px;
-    height: 750px;
-    z-index: 3;
-    animation: figureIn 1.2s 0.3s ease both;
-  }
-  @keyframes figureIn { from{opacity:0;transform:translateX(-50%) translateY(30px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
-
-  /* floating subtle glow under feet */
-  .lawyer-figure::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 200px; height: 30px;
-    background: radial-gradient(ellipse, rgba(201,168,76,0.3), transparent 70%);
-    border-radius: 50%;
-    animation: shadowPulse 3s ease-in-out infinite;
-  }
-  @keyframes shadowPulse { 0%,100%{opacity:0.6;transform:translateX(-50%) scaleX(1)} 50%{opacity:1;transform:translateX(-50%) scaleX(1.1)} }
-
-  /* ─── HERO CONTENT ─── */
-  .hero-content {
-    position: relative;
-    z-index: 5;
-    padding: 0 60px;
-    max-width: 700px;
-    animation: fadeUp 0.9s 0.2s ease both;
-  }
-
-  .hero-welcome {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 7vw, 7rem);
-    font-weight: 400;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .hero-welcome em {
-    font-style: italic;
-    color: var(--gold);
-    display: block;
-  }
-
-  .hero-sub {
-    font-size: 0.88rem;
-    line-height: 1.85;
-    color: rgba(232,224,208,0.8);
-    max-width: 520px;
-    margin: 20px 0 36px;
-  }
-
-  .hero-stats-row {
-    display: flex;
-    gap: 48px;
-    margin: 0 0 40px;
-  }
-  .h-stat {}
-  .h-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--white);
-    line-height: 1;
-  }
-  .h-stat-label {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 4px;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--gold);
-    color: var(--dark);
-    padding: 16px 36px;
-    font-size: 0.78rem;
-    letter-spacing: 2px;
-    text-transform: none;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-primary .arrow { font-size: 1rem; transition: transform 0.3s; }
-  .btn-primary:hover { background: #dbb84a; }
-  .btn-primary:hover .arrow { transform: translate(3px, -3px); }
-
-  .btn-outline {
-    border: 1px solid var(--text-muted);
-    color: var(--text-muted);
-    padding: 14px 36px;
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    transition: all 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-
-  /* ─── SECTION BASE ─── */
-  section { position: relative; z-index: 1; }
-
-  .section-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .section-eyebrow::before { content:''; width:30px; height:1px; background:var(--gold); display:block; }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--white);
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  /* ─── ABOUT ─── */
-  .about {
-    padding: 120px 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    background: var(--dark-2);
-  }
-
-  .about-visual {
-    position: relative;
-    height: 560px;
-  }
-  .about-img-main {
-    width: 78%;
-    height: 480px;
-    background: var(--dark-3);
-    border: 1px solid rgba(201,168,76,0.15);
-    position: relative;
-    overflow: hidden;
-  }
-  /* Animated courthouse illustration */
-  .building-anim { width:100%; height:100%; }
-  .about-img-accent {
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 46%;
-    height: 200px;
-    background: var(--gold);
-    display: flex; flex-direction: column; justify-content: center; padding: 24px;
-    animation: accentPulse 4s ease-in-out infinite;
-  }
-  @keyframes accentPulse { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-4px,-4px)} }
-  .about-img-accent .num {
-    font-family: 'Cormorant Garamond', serif;
+  
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--dark);
-    line-height: 1;
-  }
-  .about-img-accent .lbl { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(10,10,10,0.7); margin-top: 4px; }
-
-  .about-text p {
-    font-size: 0.88rem;
-    line-height: 1.9;
-    color: var(--text-muted);
-    margin-top: 24px;
-  }
-  .about-list { margin-top: 32px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .about-list li {
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 10px 0;
-    border-bottom: 1px solid var(--dark-4);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .about-list li::before { content:''; width:6px; height:6px; background:var(--gold); flex-shrink:0; }
-
-  /* ─── PRACTICE AREAS ─── */
-  .practice {
-    padding: 120px 60px;
-  }
-
-  .practice-header { max-width: 560px; margin-bottom: 60px; }
-
-  .practice-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .practice-card {
-    background: var(--dark-2);
-    padding: 48px 36px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-  }
-  .practice-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .practice-card:hover::before { opacity: 1; }
-  .practice-card:hover { transform: translateY(-4px); }
-  .practice-card-border {
-    position: absolute;
-    bottom: 0; left: 0; right: 100%;
-    height: 2px;
-    background: var(--gold);
-    transition: right 0.5s ease;
-  }
-  .practice-card:hover .practice-card-border { right: 0; }
-
-  .practice-icon {
-    width: 56px; height: 56px;
-    margin-bottom: 24px;
-  }
-  .practice-icon svg { width: 100%; height: 100%; }
-
-  .practice-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-  .practice-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-muted); }
-  .practice-card .learn-more {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-top: 24px; text-decoration: none;
-    transition: gap 0.3s;
-  }
-  .practice-card:hover .learn-more { gap: 16px; }
-  .learn-more::after { content: '→'; }
-
-  /* ─── TEAM ─── */
-  .team {
-    padding: 120px 60px;
-    background: var(--dark-2);
-  }
-  .team-header { text-align: center; max-width: 560px; margin: 0 auto 60px; }
-  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-
-  .team-card {
-    position: relative;
-    cursor: pointer;
-  }
-  .team-avatar {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--dark-3);
-    position: relative;
-    overflow: hidden;
+    line-height: 1.2;
     margin-bottom: 20px;
   }
-  .team-avatar svg { width:100%; height:100%; }
-  .team-avatar-overlay {
-    position: absolute; inset:0;
-    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s;
-    display: flex; align-items: flex-end; padding: 20px;
+  
+  .hero-text h1 span {
+    color: var(--accent);
+    display: block;
+    font-style: italic;
   }
-  .team-card:hover .team-avatar-overlay { opacity: 1; }
-  .team-social { display: flex; gap: 12px; }
-  .team-social a {
-    width: 32px; height: 32px;
-    border: 1px solid rgba(255,255,255,0.3);
-    display: flex; align-items: center; justify-content: center;
-    color: white; text-decoration: none; font-size: 0.7rem;
+  
+  .hero-text p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 35px;
+    line-height: 1.8;
+  }
+  
+  .hero-btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--white);
+    padding: 16px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
     transition: all 0.3s;
   }
-  .team-social a:hover { border-color: var(--gold); color: var(--gold); }
-
-  .team-gold-line {
-    width: 30px; height: 2px;
-    background: var(--gold);
-    margin-bottom: 8px;
-    transition: width 0.4s;
+  
+  .hero-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(201,168,76,0.3);
   }
-  .team-card:hover .team-gold-line { width: 60px; }
-  .team-card h4 { font-family: 'Cormorant Garamond',serif; font-size: 1.25rem; font-weight: 400; color: var(--white); }
-  .team-card span { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
-
-  /* ─── TESTIMONIALS ─── */
-  .testimonials { padding: 120px 60px; }
-  .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 60px; }
-  .test-card {
-    background: var(--dark-2);
-    padding: 48px;
+  
+  .hero-image {
     position: relative;
-    border-top: 2px solid var(--gold);
   }
-  .test-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    color: var(--gold);
-    opacity: 0.3;
-    line-height: 0.7;
-    margin-bottom: 16px;
-    font-style: italic;
+  
+  .hero-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
-  .test-text {
-    font-family: 'Cormorant Garamond', serif;
+  
+  /* Stats Section */
+  .stats {
+    background: var(--white);
+    padding: 60px 20px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .stats-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 10px;
+  }
+  
+  .stat-label {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* About Section */
+  .about {
+    padding: 100px 20px;
+    background: var(--light);
+  }
+  
+  .about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .section-subtitle {
+    color: var(--secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+  
+  .section-description {
     font-size: 1.1rem;
-    font-style: italic;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
     line-height: 1.8;
-    color: var(--text);
-    margin-bottom: 24px;
   }
-  .test-author { display: flex; align-items: center; gap: 16px; }
-  .test-avatar {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--dark-3);
-    border: 1px solid rgba(201,168,76,0.2);
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .value-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  }
+  
+  .value-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+  
+  .value-text {
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 100px 20px;
+    background: var(--white);
+  }
+  
+  .services-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .service-card {
+    background: var(--white);
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 40px 30px;
+    transition: all 0.3s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-color: var(--secondary);
+  }
+  
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 25px;
+  }
+  
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+  
+  .service-description {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  
+  .service-link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: gap 0.3s;
+  }
+  
+  .service-link:hover { gap: 10px; }
+  
+  /* Team Section */
+  .team {
+    padding: 100px 20px;
+    background: var(--light);
+  }
+  
+  .team-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .team-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+  
+  .team-image {
+    width: 100%;
+    height: 300px;
     overflow: hidden;
   }
-  .test-avatar svg { width:100%;height:100%; }
-  .test-name { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
-  .test-role { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
-  .stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 12px; }
-
-  /* ─── CONTACT ─── */
-  .contact {
-    padding: 120px 60px;
-    background: var(--dark-2);
+  
+  .team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .team-card:hover .team-image img {
+    transform: scale(1.05);
+  }
+  
+  .team-info {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  
+  .team-role {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  /* Benefits Section */
+  .benefits {
+    padding: 100px 20px;
+    background: var(--white);
+  }
+  
+  .benefits-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .benefits-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 50px;
   }
-  .contact-info h2 { margin-bottom: 32px; }
-  .contact-item {
-    display: flex; gap: 20px; align-items: flex-start;
-    margin-bottom: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--dark-4);
+  
+  .benefit-item {
+    display: flex;
+    gap: 25px;
   }
-  .contact-icon {
-    width: 44px; height: 44px; flex-shrink: 0;
-    border: 1px solid rgba(201,168,76,0.3);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gold); font-size: 1rem;
+  
+  .benefit-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--white);
+    flex-shrink: 0;
   }
-  .contact-item h4 { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-  .contact-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 20px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: var(--dark-3);
-    border: 1px solid var(--dark-4);
-    color: var(--text);
-    padding: 14px 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.82rem;
-    transition: border-color 0.3s;
-    outline: none;
-    appearance: none;
+  
+  .benefit-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 12px;
   }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus { border-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group select option { background: var(--dark-3); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--dark);
-    padding: 60px;
-    border-top: 1px solid var(--dark-3);
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px;
+  
+  .benefit-content p {
+    color: var(--text-light);
+    line-height: 1.7;
   }
-  .footer-brand p { font-size: 0.8rem; line-height: 1.8; color: var(--text-muted); margin-top: 16px; max-width: 280px; }
-  .footer-col h5 { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .footer-col ul a { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
-  .footer-col ul a:hover { color: var(--gold); }
-  .footer-bottom {
-    background: var(--dark);
-    padding: 20px 60px;
-    border-top: 1px solid var(--dark-3);
-    display: flex; justify-content: space-between; align-items: center;
+  
+  /* CTA Section */
+  .cta {
+    background: linear-gradient(135deg, var(--primary) 0%, #16162a 100%);
+    color: var(--white);
+    padding: 80px 20px;
+    text-align: center;
   }
-  .footer-bottom p { font-size: 0.72rem; color: var(--text-muted); }
-
-  /* ─── FLOATING CTA ─── */
-  .float-cta {
-    position: fixed;
-    bottom: 40px; right: 40px;
-    z-index: 99;
-    background: var(--gold);
-    color: var(--dark);
-    padding: 14px 24px;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .cta p {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    opacity: 0.9;
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--white);
+    padding: 16px 45px;
+    border-radius: 5px;
     text-decoration: none;
-    box-shadow: 0 8px 32px rgba(201,168,76,0.3);
-    animation: floatCta 3s ease-in-out infinite;
+    font-weight: 600;
+    font-size: 1.05rem;
     transition: all 0.3s;
   }
-  .float-cta:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,168,76,0.4); }
-  @keyframes floatCta { 0%,100%{box-shadow:0 8px 32px rgba(201,168,76,0.3)} 50%{box-shadow:0 12px 40px rgba(201,168,76,0.5)} }
-
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* Mobile */
-  @media (max-width: 900px) {
-    nav { padding: 0 16px; }
+  
+  .cta-btn:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(201,168,76,0.3);
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px 20px 30px;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .footer-about h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .footer-about p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  
+  .footer-section ul {
+    list-style: none;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-section a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover { color: var(--accent); }
+  
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+  }
+  
+  /* Responsive */
+  @media (max-width: 968px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .stats-content { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .hero-content { padding: 0 24px; }
-    .hero-arch-wrap { width: 100%; opacity: 0.3; }
-    .about, .contact { grid-template-columns: 1fr; padding: 80px 24px; }
-    .about-visual { height: 300px; }
-    .practice { padding: 80px 24px; }
-    .practice-grid { grid-template-columns: 1fr; }
-    .team { padding: 80px 24px; }
-    .team-grid { grid-template-columns: 1fr 1fr; }
-    .testimonials { padding: 80px 24px; }
-    .test-grid { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr 1fr; padding: 40px 24px; }
-    .footer-bottom { padding: 16px 24px; flex-direction: column; gap: 8px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
-  <a href="#" class="nav-brand">
-    <!-- Animated circular seal -->
-    <svg class="nav-seal" viewBox="0 0 52 52" fill="none">
-      <circle cx="26" cy="26" r="24" stroke="#c9a84c" stroke-width="1"/>
-      <circle cx="26" cy="26" r="19" stroke="#c9a84c" stroke-width="0.5" stroke-dasharray="3 2"/>
-      <!-- Scales of justice icon -->
-      <line x1="26" y1="10" x2="26" y2="40" stroke="#c9a84c" stroke-width="1.2"/>
-      <line x1="16" y1="18" x2="36" y2="18" stroke="#c9a84c" stroke-width="1.2"/>
-      <path d="M13 25 Q16 22 19 25 Q16 28 13 25Z" stroke="#c9a84c" stroke-width="1" fill="none"/>
-      <path d="M33 25 Q36 22 39 25 Q36 28 33 25Z" stroke="#c9a84c" stroke-width="1" fill="none"/>
-      <line x1="16" y1="18" x2="13" y2="24" stroke="#c9a84c" stroke-width="0.8"/>
-      <line x1="36" y1="18" x2="39" y2="24" stroke="#c9a84c" stroke-width="0.8"/>
-    </svg>
-    <div class="nav-brand-text">
-      <span class="firm-name">Sterling & Associates</span>
-      <span class="firm-tagline">Advocacy with Compassion</span>
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-content">
+    <div class="top-bar-item">
+      <span>📧</span>
+      <a href="mailto:contact@sterlinglaw.com">contact@sterlinglaw.com</a>
     </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#practice">Our Services</a></li>
-    <li><a href="#testimonials">Blogs</a></li>
-    <li><a href="#contact">Contact Us</a></li>
-  </ul>
-</nav>
-
-<!-- ─── HERO ─── -->
-<section class="hero" id="home">
-
-  <!-- Animated courthouse SVG background -->
-  <div class="hero-bg">
-    <svg width="100%" height="100%" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#2a1a0a"/>
-          <stop offset="100%" stop-color="#1a0e06"/>
-        </linearGradient>
-        <filter id="bldgBlur"><feGaussianBlur stdDeviation="0.5"/></filter>
-      </defs>
-      <!-- Sky -->
-      <rect width="1440" height="800" fill="url(#skyGrad)"/>
-      <!-- Atmospheric haze -->
-      <ellipse cx="720" cy="400" rx="800" ry="500" fill="rgba(120,60,20,0.15)"/>
-
-      <!-- Main courthouse building -->
-      <!-- Steps -->
-      <rect x="220" y="680" width="1000" height="18" fill="#3a2010"/>
-      <rect x="240" y="660" width="960" height="22" fill="#321a0c"/>
-      <rect x="260" y="638" width="920" height="24" fill="#2e1808"/>
-      <!-- Foundation -->
-      <rect x="280" y="300" width="880" height="340" fill="#2a1406"/>
-      <!-- Main columns (8) -->
-      <rect x="300" y="240" width="28" height="360" fill="#321808"/>
-      <rect x="420" y="240" width="28" height="360" fill="#2e1606"/>
-      <rect x="540" y="240" width="28" height="360" fill="#321808"/>
-      <rect x="660" y="240" width="28" height="360" fill="#2e1606"/>
-      <rect x="780" y="240" width="28" height="360" fill="#321808"/>
-      <rect x="900" y="240" width="28" height="360" fill="#2e1606"/>
-      <rect x="1020" y="240" width="28" height="360" fill="#321808"/>
-      <rect x="1112" y="240" width="28" height="360" fill="#2e1606"/>
-      <!-- Entablature -->
-      <rect x="280" y="222" width="880" height="24" fill="#3a1e0a"/>
-      <rect x="270" y="208" width="900" height="18" fill="#421e08"/>
-      <!-- Pediment triangle -->
-      <polygon points="720,80 280,208 1160,208" fill="#321606"/>
-      <polygon points="720,92 295,208 1145,208" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
-      <!-- Roof line -->
-      <rect x="265" y="200" width="910" height="12" fill="#3a1a06"/>
-      <!-- Dome suggestion -->
-      <ellipse cx="720" cy="120" rx="80" ry="50" fill="#2e1406"/>
-      <ellipse cx="720" cy="100" rx="50" ry="35" fill="#321808"/>
-      <!-- Windows with animated lights -->
-      <rect x="340" y="340" width="60" height="90" fill="#1a0a02">
-        <animate attributeName="fill" values="#1a0a02;#2a1808;#1a0a02" dur="5s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="480" y="340" width="60" height="90" fill="#1a0a02">
-        <animate attributeName="fill" values="#2a1808;#1a0a02;#2a1808" dur="4s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="620" y="340" width="60" height="90" fill="#1a0a02"/>
-      <rect x="760" y="340" width="60" height="90" fill="#1a0a02">
-        <animate attributeName="fill" values="#1a0a02;#241406;#1a0a02" dur="6s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="900" y="340" width="60" height="90" fill="#1a0a02">
-        <animate attributeName="fill" values="#241406;#1a0a02;#241406" dur="3.5s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="1040" y="340" width="60" height="90" fill="#1a0a02"/>
-      <!-- Main door arch -->
-      <rect x="668" y="480" width="84" height="160" fill="#120801"/>
-      <path d="M668 480 Q710 440 752 480" fill="#120801"/>
-      <!-- Kannada text suggestion (blurry facade) -->
-      <text x="460" y="460" font-size="18" fill="rgba(201,168,76,0.06)" font-family="serif" letter-spacing="4">HIGH COURT OF JUSTICE</text>
-      <!-- Gold accent line at top of steps -->
-      <line x1="220" y1="680" x2="1220" y2="680" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
-      <!-- Atmospheric particles -->
-      <circle cx="400" cy="150" r="1.5" fill="rgba(201,168,76,0.3)">
-        <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="900" cy="100" r="1" fill="rgba(201,168,76,0.4)">
-        <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="600" cy="60" r="1.5" fill="rgba(201,168,76,0.3)">
-        <animate attributeName="opacity" values="0.5;0;0.5" dur="5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="1100" cy="130" r="1" fill="rgba(201,168,76,0.3)">
-        <animate attributeName="opacity" values="0;0.6;0" dur="3.5s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
-    <div class="hero-bg-overlay"></div>
-  </div>
-
-  <!-- Hero left content -->
-  <div class="hero-content">
-    <h1 class="hero-welcome">
-      Welcome To
-      <em>Justice</em>
-    </h1>
-    <p class="hero-sub">
-      A trusted team of legal experts providing unparalleled expertise and dedication. We offer tailored legal solutions to protect your rights and achieve your goals.
-    </p>
-    <div class="hero-stats-row">
-      <div class="h-stat">
-        <div class="h-stat-num"><span data-target="10" class="counter">0</span>+</div>
-        <div class="h-stat-label">Years of Experience</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-num"><span data-target="500" class="counter">0</span>+</div>
-        <div class="h-stat-label">Cases Handled</div>
-      </div>
-      <div class="h-stat">
-        <div class="h-stat-num"><span data-target="98" class="counter">0</span>%</div>
-        <div class="h-stat-label">Success Rate</div>
-      </div>
+    <div class="top-bar-item">
+      <span>📞</span>
+      <a href="tel:+911234567890">+91 123 456 7890</a>
     </div>
-    <a href="#contact" class="btn-primary">
-      Request A Consultation <span class="arrow">↗</span>
-    </a>
-  </div>
-
-  <!-- Gold arch with animated lawyer figure -->
-  <div class="hero-arch-wrap">
-    <div class="hero-arch">
-      <!-- Gold arch background -->
-      <div class="arch-bg"></div>
-
-      <!-- Lady Justice outline on right edge -->
-      <svg class="arch-justice" viewBox="0 0 180 480" fill="none">
-        <!-- Blindfolded figure holding scales -->
-        <!-- Head with blindfold -->
-        <ellipse cx="90" cy="60" rx="28" ry="34" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-        <line x1="62" y1="58" x2="118" y2="58" stroke="#c9a84c" stroke-width="2.5"/>
-        <!-- Crown/headpiece -->
-        <path d="M70 35 L90 20 L110 35" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-        <line x1="90" y1="20" x2="90" y2="10" stroke="#c9a84c" stroke-width="1"/>
-        <!-- Body/robe -->
-        <path d="M62 94 C40 120 30 200 25 380 L155 380 C150 200 140 120 118 94" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-        <!-- Arms -->
-        <line x1="62" y1="130" x2="10" y2="100" stroke="#c9a84c" stroke-width="1.5"/>
-        <line x1="118" y1="130" x2="170" y2="100" stroke="#c9a84c" stroke-width="1.5"/>
-        <!-- Left scale pan (lower) -->
-        <line x1="10" y1="100" x2="10" y2="135" stroke="#c9a84c" stroke-width="1"/>
-        <path d="M-5 135 Q10 145 25 135" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
-        <!-- Right scale pan (higher) -->
-        <line x1="170" y1="100" x2="170" y2="115" stroke="#c9a84c" stroke-width="1"/>
-        <path d="M155 115 Q170 125 185 115" stroke="#c9a84c" stroke-width="1.2" fill="none"/>
-        <!-- Scale beam -->
-        <line x1="0" y1="100" x2="180" y2="100" stroke="#c9a84c" stroke-width="1"/>
-        <!-- Sword in right hand -->
-        <line x1="118" y1="130" x2="150" y2="250" stroke="#c9a84c" stroke-width="1.5"/>
-        <path d="M145 245 L155 255 L148 252" stroke="#c9a84c" stroke-width="1" fill="none"/>
-      </svg>
-
-      <!-- Main lawyer image -->
-      <div class="lawyer-figure">
-        <img src="images/lawyer-main.png" alt="Lead Attorney" style="width:100%;height:100%;object-fit:contain;object-position:bottom;">
-      </div>
+    <div class="top-bar-item">
+      <span>🕒</span>
+      <span>Mon-Sat, 9am - 6pm</span>
     </div>
   </div>
-
-</section>
-
-<!-- ─── ABOUT ─── -->
-<section class="about reveal" id="about">
-  <div class="about-visual">
-    <div class="about-img-main">
-      <!-- Animated courthouse illustration -->
-      <svg class="building-anim" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bldg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#1e1e1e"/>
-            <stop offset="100%" stop-color="#111"/>
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <rect width="400" height="480" fill="url(#bldg)"/>
-        <!-- Courthouse steps -->
-        <rect x="50" y="400" width="300" height="12" fill="#1f1f1f"/>
-        <rect x="60" y="388" width="280" height="12" fill="#1e1e1e"/>
-        <rect x="70" y="376" width="260" height="12" fill="#1d1d1d"/>
-        <!-- Main building body -->
-        <rect x="80" y="200" width="240" height="176" fill="#1c1c1c"/>
-        <!-- Columns -->
-        <rect x="100" y="220" width="18" height="150" fill="#222"/>
-        <rect x="135" y="220" width="18" height="150" fill="#222"/>
-        <rect x="170" y="220" width="18" height="150" fill="#222"/>
-        <rect x="205" y="220" width="18" height="150" fill="#222"/>
-        <rect x="240" y="220" width="18" height="150" fill="#222"/>
-        <rect x="275" y="220" width="18" height="150" fill="#222"/>
-        <!-- Entablature -->
-        <rect x="80" y="210" width="240" height="16" fill="#252525"/>
-        <!-- Pediment -->
-        <polygon points="200,120 80,210 320,210" fill="#1e1e1e" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-        <!-- Roof detail -->
-        <rect x="75" y="118" width="250" height="8" fill="#252525"/>
-        <!-- Door -->
-        <rect x="175" y="310" width="50" height="66" fill="#111" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
-        <!-- Windows -->
-        <rect x="100" y="250" width="25" height="40" fill="#0a0a0a" stroke="rgba(201,168,76,0.1)" stroke-width="1">
-          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/>
-        </rect>
-        <rect x="270" y="250" width="25" height="40" fill="#0a0a0a" stroke="rgba(201,168,76,0.1)" stroke-width="1">
-          <animate attributeName="opacity" values="1;0.6;1" dur="4s" repeatCount="indefinite"/>
-        </rect>
-        <!-- Gold dome accent -->
-        <path d="M160,120 Q200,80 240,120" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.4"/>
-        <!-- Stars / lighting -->
-        <circle cx="200" cy="60" r="2" fill="#c9a84c" opacity="0.6" filter="url(#glow)">
-          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="150" cy="40" r="1.5" fill="#c9a84c" opacity="0.4">
-          <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="250" cy="50" r="1.5" fill="#c9a84c" opacity="0.4">
-          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
-        </circle>
-        <!-- Ground gold line -->
-        <line x1="50" y1="412" x2="350" y2="412" stroke="#c9a84c" stroke-width="1" opacity="0.2"/>
-      </svg>
-    </div>
-    <div class="about-img-accent">
-      <span class="num">25+</span>
-      <div class="lbl">Years of Legal Excellence</div>
-    </div>
-  </div>
-  <div class="about-text">
-    <div class="section-eyebrow">About Our Firm</div>
-    <h2 class="section-title">A Legacy of <em>Legal Excellence</em></h2>
-    <p>Founded on the principles of justice, integrity, and unwavering commitment to our clients, our firm has been a beacon of legal expertise for over two and a half decades. We combine the wisdom of experience with the innovation of modern legal practice.</p>
-    <p>Our attorneys are recognized across High Courts and the Supreme Court, having argued landmark cases that have shaped jurisprudence. We believe that every client deserves access to the highest quality legal representation.</p>
-    <ul class="about-list">
-      <li>High Court Advocates</li>
-      <li>Supreme Court Practice</li>
-      <li>Corporate Legal Advisory</li>
-      <li>Alternative Dispute Resolution</li>
-      <li>Legal Research & Analysis</li>
-      <li>Pro Bono Services</li>
-    </ul>
-    <div style="margin-top:40px">
-      <a href="#contact" class="btn-primary"><span>Schedule a Consultation</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PRACTICE AREAS ─── -->
-<section class="practice reveal" id="practice">
-  <div class="practice-header">
-    <div class="section-eyebrow">What We Do</div>
-    <h2 class="section-title">Our <em>Practice Areas</em></h2>
-  </div>
-  <div class="practice-grid">
-
-    <!-- Card 1 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <rect x="1" y="1" width="54" height="54" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
-          <line x1="28" y1="8" x2="28" y2="48" stroke="#c9a84c" stroke-width="1.5"/>
-          <line x1="12" y1="16" x2="44" y2="16" stroke="#c9a84c" stroke-width="1.5"/>
-          <circle cx="12" cy="28" r="10" stroke="#c9a84c" stroke-width="1.5"/>
-          <circle cx="44" cy="28" r="10" stroke="#c9a84c" stroke-width="1.5"/>
-          <polygon points="25,44 31,44 28,50" stroke="#c9a84c" fill="none" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3>Criminal Law</h3>
-      <p>Expert defence in criminal matters across all courts. From bail applications to full trials, we defend your rights with rigour and determination.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <rect x="8" y="8" width="40" height="40" stroke="#c9a84c" stroke-width="1.5"/>
-          <rect x="14" y="14" width="28" height="4" fill="#c9a84c" opacity="0.6"/>
-          <rect x="14" y="24" width="28" height="2" fill="#c9a84c" opacity="0.3"/>
-          <rect x="14" y="30" width="20" height="2" fill="#c9a84c" opacity="0.3"/>
-          <rect x="14" y="36" width="24" height="2" fill="#c9a84c" opacity="0.3"/>
-        </svg>
-      </div>
-      <h3>Civil Litigation</h3>
-      <p>Comprehensive representation in civil disputes including property, contracts, torts, and injunctions at all levels of the judiciary.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <circle cx="28" cy="28" r="20" stroke="#c9a84c" stroke-width="1.5"/>
-          <path d="M28 8 L28 18 M28 38 L28 48 M8 28 L18 28 M38 28 L48 28" stroke="#c9a84c" stroke-width="1.5"/>
-          <circle cx="28" cy="28" r="6" stroke="#c9a84c" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3>Corporate Law</h3>
-      <p>Strategic legal counsel for businesses — from incorporation and compliance to mergers, acquisitions, and commercial disputes.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <polygon points="28,4 52,40 4,40" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-          <line x1="28" y1="18" x2="28" y2="30" stroke="#c9a84c" stroke-width="2"/>
-          <circle cx="28" cy="35" r="2" fill="#c9a84c"/>
-        </svg>
-      </div>
-      <h3>Constitutional Law</h3>
-      <p>Protecting fundamental rights through constitutional litigation. We argue writ petitions, PILs, and constitutional challenges at the highest courts.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <rect x="6" y="20" width="44" height="28" stroke="#c9a84c" stroke-width="1.5"/>
-          <path d="M6 20 L28 8 L50 20" stroke="#c9a84c" stroke-width="1.5"/>
-          <rect x="20" y="30" width="16" height="18" stroke="#c9a84c" stroke-width="1"/>
-        </svg>
-      </div>
-      <h3>Family & Matrimonial</h3>
-      <p>Sensitive, discreet handling of divorce, custody, maintenance, adoption, and domestic violence matters with compassion and expertise.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="practice-card">
-      <div class="practice-card-border"></div>
-      <div class="practice-icon">
-        <svg viewBox="0 0 56 56" fill="none">
-          <rect x="4" y="28" width="20" height="24" stroke="#c9a84c" stroke-width="1.5"/>
-          <rect x="18" y="18" width="20" height="34" stroke="#c9a84c" stroke-width="1.5"/>
-          <rect x="32" y="10" width="20" height="42" stroke="#c9a84c" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h3>Real Estate & Property</h3>
-      <p>Due diligence, title verification, property disputes, land acquisition challenges, and real estate transactions handled with precision.</p>
-      <a href="#" class="learn-more">Learn More</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── TEAM ─── -->
-<section class="team reveal" id="team">
-  <div class="team-header">
-    <div class="section-eyebrow">Meet The Team</div>
-    <h2 class="section-title">Our <em>Distinguished</em> Advocates</h2>
-  </div>
-  <div class="team-grid">
-
-    <!-- Team member 1 -->
-    <div class="team-card">
-      <div class="team-avatar">
-        <img src="images/lawyer-main.png" alt="Lead Attorney" style="width:100%;height:100%;object-fit:cover;">
-        <div class="team-avatar-overlay">
-          <div class="team-social">
-            <a href="#">in</a>
-            <a href="#">@</a>
-          </div>
-        </div>
-      </div>
-      <div class="team-gold-line"></div>
-      <h4>A. R. Sterling</h4>
-      <span>Senior Partner · Constitutional Law</span>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">
-        <img src="images/Screenshot 2026-02-26 at 6.01.08 PM.png" alt="Attorney" style="width:100%;height:100%;object-fit:cover;">
-        <div class="team-avatar-overlay">
-          <div class="team-social">
-            <a href="#">in</a>
-            <a href="#">@</a>
-          </div>
-        </div>
-      </div>
-      <div class="team-gold-line"></div>
-      <h4>M. V. Whitfield</h4>
-      <span>Partner · Criminal Law</span>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">
-        <img src="images/Screenshot 2026-02-26 at 6.01.44 PM.png" alt="Attorney" style="width:100%;height:100%;object-fit:cover;">
-        <div class="team-avatar-overlay">
-          <div class="team-social">
-            <a href="#">in</a>
-            <a href="#">@</a>
-          </div>
-        </div>
-      </div>
-      <div class="team-gold-line"></div>
-      <h4>D. P. Ashford</h4>
-      <span>Associate · Corporate Law</span>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">
-        <img src="images/Screenshot 2026-02-26 at 6.01.53 PM.png" alt="Attorney" style="width:100%;height:100%;object-fit:cover;">
-        <div class="team-avatar-overlay">
-          <div class="team-social">
-            <a href="#">in</a>
-            <a href="#">@</a>
-          </div>
-        </div>
-      </div>
-      <div class="team-gold-line"></div>
-      <h4>S. K. Harrington</h4>
-      <span>Associate · Family Law</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── TESTIMONIALS ─── -->
-<section class="testimonials reveal" id="testimonials">
-  <div class="section-eyebrow">Client Voices</div>
-  <h2 class="section-title" style="margin-bottom:0">What Our <em>Clients Say</em></h2>
-  <div class="test-grid">
-    <div class="test-card">
-      <div class="test-quote">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="test-text">The team handled my corporate dispute with extraordinary skill and dedication. Their attention to detail and deep knowledge of commercial law was evident at every stage. We achieved an outcome beyond what I thought possible.</p>
-      <div class="test-author">
-        <div class="test-avatar">
-          <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" fill="#1e1e1e"/><ellipse cx="24" cy="18" rx="10" ry="12" fill="#252525"/><path d="M8 48 C8 36 40 36 40 48" fill="#252525"/></svg>
-        </div>
-        <div>
-          <div class="test-name">R. Blackwood</div>
-          <div class="test-role">Managing Director, Blackwood Industries</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="test-text">When I faced a criminal charge that could have ended my career, this firm stood by me with unwavering commitment. Their preparation, advocacy, and strategic brilliance in court secured my acquittal. I am forever grateful.</p>
-      <div class="test-author">
-        <div class="test-avatar">
-          <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" fill="#1e1e1e"/><ellipse cx="24" cy="18" rx="10" ry="12" fill="#252525"/><path d="M8 48 C8 36 40 36 40 48" fill="#252525"/></svg>
-        </div>
-        <div>
-          <div class="test-name">T. Henley</div>
-          <div class="test-role">Senior Government Official</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="test-text">My property dispute had dragged on for years before I found this firm. Within months, they resolved a matter that seemed hopeless. Professional, responsive, and genuinely invested in my case.</p>
-      <div class="test-author">
-        <div class="test-avatar">
-          <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" fill="#1e1e1e"/><ellipse cx="24" cy="18" rx="10" ry="12" fill="#252525"/><path d="M8 48 C8 36 40 36 40 48" fill="#252525"/></svg>
-        </div>
-        <div>
-          <div class="test-name">P. Chandler</div>
-          <div class="test-role">Real Estate Developer</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="test-quote">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="test-text">Their constitutional law practice is genuinely exceptional. The PIL they filed on our behalf was argued with rare intellectual depth and resulted in a landmark judgement. Truly a firm that understands the power of law.</p>
-      <div class="test-author">
-        <div class="test-avatar">
-          <svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" fill="#1e1e1e"/><ellipse cx="24" cy="18" rx="10" ry="12" fill="#252525"/><path d="M8 48 C8 36 40 36 40 48" fill="#252525"/></svg>
-        </div>
-        <div>
-          <div class="test-name">Dr. A. Verma</div>
-          <div class="test-role">Human Rights Activist</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CONTACT ─── -->
-<section class="contact reveal" id="contact">
-  <div class="contact-info">
-    <div class="section-eyebrow">Get In Touch</div>
-    <h2 class="section-title">Schedule a <em>Consultation</em></h2>
-    <p style="font-size:0.85rem;line-height:1.9;color:var(--text-muted);margin-top:24px;margin-bottom:40px">Your first consultation is complimentary. Our team will assess your legal needs and chart the best path forward — with honesty, clarity, and strategic precision.</p>
-
-    <div class="contact-item">
-      <div class="contact-icon">⚖</div>
-      <div>
-        <h4>Our Chambers</h4>
-        <p>Chamber 12, High Court Complex<br>Central District, City — 110001</p>
-      </div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-icon">✆</div>
-      <div>
-        <h4>Telephone</h4>
-        <p>+1 (800) STERLING<br>Mon – Sat, 9:00 AM – 7:00 PM</p>
-      </div>
-    </div>
-    <div class="contact-item">
-      <div class="contact-icon">✉</div>
-      <div>
-        <h4>Email</h4>
-        <p>consult@sterlinglaw.com<br>urgent@sterlinglaw.com</p>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="John">
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Doe">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="john@example.com">
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="+1 (000) 000-0000">
-      </div>
-      <div class="form-group">
-        <label>Practice Area</label>
-        <select>
-          <option value="" disabled selected>Select a practice area</option>
-          <option>Criminal Law</option>
-          <option>Civil Litigation</option>
-          <option>Corporate Law</option>
-          <option>Constitutional Law</option>
-          <option>Family & Matrimonial</option>
-          <option>Real Estate & Property</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Brief Description of Matter</label>
-        <textarea placeholder="Please describe your legal matter briefly..."></textarea>
-      </div>
-      <button type="submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;padding:16px;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-family:Montserrat,sans-serif;font-weight:500;">
-        <span>Request Free Consultation</span>
-      </button>
-    </form>
-  </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="footer-brand">
-    <div class="nav-logo" style="font-size:1.4rem;color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:2px;text-transform:uppercase;">
-      Sterling & Associates
-      <span style="display:block;font-size:0.5rem;letter-spacing:5px;color:var(--text-muted);font-family:'Montserrat',sans-serif;font-weight:400;margin-top:4px">ADVOCATES · SOLICITORS · CONSULTANTS</span>
-    </div>
-    <p>Dedicated to the pursuit of justice with integrity, expertise, and an unwavering commitment to our clients' rights and interests since 1999.</p>
-  </div>
-  <div class="footer-col">
-    <h5>Practice Areas</h5>
-    <ul>
-      <li><a href="#">Criminal Law</a></li>
-      <li><a href="#">Civil Litigation</a></li>
-      <li><a href="#">Corporate Law</a></li>
-      <li><a href="#">Constitutional Law</a></li>
-      <li><a href="#">Family Law</a></li>
-      <li><a href="#">Real Estate</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h5>Quick Links</h5>
-    <ul>
-      <li><a href="#about">About the Firm</a></li>
-      <li><a href="#team">Our Advocates</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#">Legal Resources</a></li>
-      <li><a href="#">Case Studies</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h5>Connect</h5>
-    <ul>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">Twitter / X</a></li>
-      <li><a href="#">Legal500 Profile</a></li>
-      <li><a href="#">Bar Council</a></li>
-    </ul>
-    <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--dark-4)">
-      <div style="font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Bar Associations</div>
-      <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.8">High Court Bar<br>Supreme Court Bar<br>International Bar Assoc.</div>
-    </div>
-  </div>
-</footer>
-<div class="footer-bottom">
-  <p>© 2025 Sterling & Associates. All Rights Reserved. | Advocates & Solicitors</p>
-  <p>Privacy Policy · Disclaimer · Terms of Engagement</p>
 </div>
 
-<!-- Floating CTA -->
-<a href="#contact" class="float-cta">Free Consultation</a>
+<!-- Navigation -->
+<nav>
+  <div class="nav-content">
+    <div class="logo">Sterling <span>&</span> Associates</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get A Quote</a>
+  </div>
+</nav>
 
-<script>
-  // ─── COUNTER ANIMATION ───
-  function animateCounter(el, target, duration = 2000) {
-    const start = performance.now();
-    const suffix = el.dataset.suffix || '';
-    const update = (now) => {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target);
-      if (progress < 1) requestAnimationFrame(update);
-    };
-    requestAnimationFrame(update);
-  }
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>
+        Welcome To
+        <span>Sterling & Associates</span>
+      </h1>
+      <p>A trusted team of legal experts providing unparalleled expertise and dedication. We offer tailored legal solutions to protect your rights and achieve your goals.</p>
+      <a href="#contact" class="hero-btn">Request A Consultation</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/lawyer-main.png" alt="Lead Attorney">
+    </div>
+  </div>
+</section>
 
-  let countersStarted = false;
-  function startCounters() {
-    if (countersStarted) return;
-    countersStarted = true;
-    document.querySelectorAll('.counter[data-target]').forEach(el => {
-      animateCounter(el, parseInt(el.dataset.target));
-    });
-  }
+<!-- Stats Section -->
+<section class="stats">
+  <div class="stats-content">
+    <div class="stat-item">
+      <div class="stat-number">25+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Cases Handled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">98%</div>
+      <div class="stat-label">Success Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+  </div>
+</section>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
+<!-- About Section -->
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="section-header">
+      <div class="section-subtitle">Client Centric, Timely Delivery</div>
+      <h2 class="section-title">Leading Expert Law Firm</h2>
+      <p class="section-description">At Sterling & Associates, we deliver expert legal services with a focus on complex cases. Committed to the highest ethical and professional standards, we provide customized solutions tailored to each client's unique needs.</p>
+    </div>
+    
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <h3 class="value-title">Justice</h3>
+        <p class="value-text">We uphold the highest ethical standards in all legal matters, ensuring fairness and integrity.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3 class="value-title">Trust</h3>
+        <p class="value-text">Clear communication and honest advice at every step of your legal journey.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⭐</div>
+        <h3 class="value-title">Excellence</h3>
+        <p class="value-text">Providing specialized, outcome-focused legal counsel with dedication and expertise.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<!-- Services Section -->
+<section class="services" id="services">
+  <div class="services-content">
+    <div class="section-header">
+      <div class="section-subtitle">What We Do</div>
+      <h2 class="section-title">Our Comprehensive Legal Practice Areas</h2>
+      <p class="section-description">We provide full legal services, including consultation, representation, and direction, to ensure that legal concerns are resolved effectively and efficiently.</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚖️</div>
+        <h3 class="service-title">Criminal Law</h3>
+        <p class="service-description">From criminal charges to safeguarding clients' rights, we provide the best defense in criminal matters.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3 class="service-title">Civil Law</h3>
+        <p class="service-description">Expert legal guidance and representation for all civil law matters, contracts, and notary services.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👧</div>
+        <h3 class="service-title">Family Law</h3>
+        <p class="service-description">Legal expertise for divorce, family court issues, and comprehensive support for family disputes.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3 class="service-title">Corporate Law</h3>
+        <p class="service-description">Strategic legal counsel for businesses, from incorporation to mergers and acquisitions.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3 class="service-title">Property Law</h3>
+        <p class="service-description">Due diligence, title verification, property disputes, and real estate transactions.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">📜</div>
+        <h3 class="service-title">Constitutional Law</h3>
+        <p class="service-description">Protecting fundamental rights through constitutional litigation and writ petitions.</p>
+        <a href="#" class="service-link">View Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  // Start counters after 800ms (hero loads)
-  setTimeout(startCounters, 800);
+<!-- Team Section -->
+<section class="team" id="team">
+  <div class="team-content">
+    <div class="section-header">
+      <div class="section-subtitle">Meet The Team</div>
+      <h2 class="section-title">Our Distinguished Advocates</h2>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-image">
+          <img src="images/lawyer-main.png" alt="Attorney">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">A. R. Sterling</h3>
+          <p class="team-role">Senior Partner · Constitutional Law</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <div class="team-image">
+          <img src="images/Screenshot 2026-02-26 at 6.01.08 PM.png" alt="Attorney">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">M. V. Whitfield</h3>
+          <p class="team-role">Partner · Criminal Law</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <div class="team-image">
+          <img src="images/Screenshot 2026-02-26 at 6.01.44 PM.png" alt="Attorney">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">D. P. Ashford</h3>
+          <p class="team-role">Associate · Corporate Law</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <div class="team-image">
+          <img src="images/Screenshot 2026-02-26 at 6.01.53 PM.png" alt="Attorney">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">S. K. Harrington</h3>
+          <p class="team-role">Associate · Family Law</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  // ─── FORM SUBMIT ───
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    const span = btn.querySelector('span');
-    span.textContent = 'Sending...';
-    btn.style.opacity = '0.7';
-    setTimeout(() => {
-      span.textContent = '✓ Message Received';
-      btn.style.background = '#2a5c2a';
-      btn.style.opacity = '1';
-      setTimeout(() => {
-        span.textContent = 'Request Free Consultation';
-        btn.style.background = '';
-      }, 3000);
-    }, 1500);
-  }
+<!-- Benefits Section -->
+<section class="benefits">
+  <div class="benefits-content">
+    <div class="section-header">
+      <div class="section-subtitle">Why Choose Us</div>
+      <h2 class="section-title">The Benefits of Choosing Us</h2>
+    </div>
+    
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">👥</div>
+        <div class="benefit-content">
+          <h3>Client-Centered Approach</h3>
+          <p>We prioritize clear communication, ensuring you're informed and confident at every step of your legal journey.</p>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-content">
+          <h3>Prompt and Reliable Service</h3>
+          <p>Our firm is known for timely resolutions, minimizing delays while maintaining the highest standards of professionalism.</p>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">🏆</div>
+        <div class="benefit-content">
+          <h3>Trusted by the Community</h3>
+          <p>With a proven track record of successful outcomes, we've earned the trust of clients across the region.</p>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-content">
+          <h3>Affordable and Transparent</h3>
+          <p>We provide high-quality legal support at competitive rates, with no hidden fees, ensuring peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  // ─── NAV ACTIVE STATE ───
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.background = 'rgba(10,10,10,0.97)';
-      nav.style.backdropFilter = 'blur(10px)';
-    } else {
-      nav.style.background = '';
-      nav.style.backdropFilter = '';
-    }
-  });
-</script>
+<!-- CTA Section -->
+<section class="cta" id="contact">
+  <div class="cta-content">
+    <h2>Schedule A Free Consultation</h2>
+    <p>Your first consultation is complimentary. Our team will assess your legal needs and chart the best path forward with honesty, clarity, and strategic precision.</p>
+    <a href="tel:+911234567890" class="cta-btn">Request A Consultation</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-about">
+      <h3>Sterling & Associates</h3>
+      <p>Expert legal services, dedicated to justice, client-focused, trusted advice, and professional excellence since inception.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Our Team</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Criminal Law</a></li>
+        <li><a href="#">Civil Law</a></li>
+        <li><a href="#">Family Law</a></li>
+        <li><a href="#">Corporate Law</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+911234567890">+91 123 456 7890</a></li>
+        <li><a href="mailto:contact@sterlinglaw.com">contact@sterlinglaw.com</a></li>
+        <li>Mon-Sat, 9am - 6pm</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 Sterling & Associates Law Firm. All rights reserved.</p>
+  </div>
+</footer>
+
 </body>
 </html>
